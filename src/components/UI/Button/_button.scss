@@ -1,0 +1,28 @@
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    padding: 0 32px;
+    border: 1px solid #0188DA;
+    border-radius: 6px;
+    background: #0188DA;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+        background: #237198;
+        transition: all 0.3s;
+    }
+
+    &.white {
+        border: 1px solid #D7EFFD;
+        background: #FFFFFF;
+        color: #0188DA;
+
+        &:hover {
+            background: #F0F8FD;
+        }
+    }
+}
