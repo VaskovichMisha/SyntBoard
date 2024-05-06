@@ -15,19 +15,18 @@
 <script>
 
 export default {
+  props: {
+    tabs: Array
+  },
   data() {
     return {
       selectedTab: 0,
-      tabs: [
-        { title: 'Graph', id: 0},
-        { title: 'Heatmap', id: 1},
-        { title: 'Diagram', id: 2},
-      ]
     }
   },
   methods: {
     openTab(tab) {
       this.selectedTab = tab.id
+      this.$emit('change-tab', tab.id)
     }
   },
   mounted() {

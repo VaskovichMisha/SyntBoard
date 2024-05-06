@@ -1,5 +1,9 @@
 <template>
   <div class="_container">
+    <h1 class="logo">
+      <img src="@/assets/image/logo.png" alt="">
+      <span>SyntBoard</span>
+    </h1>
     <div class="main">
       <div class="main__left">
         <div class="main__data">
@@ -26,10 +30,15 @@
           </div>
         </div>
         <div class="main__data-graph">
+          <Tabs
+              :tabs="tabs"
+              @change-tab="changeImage"
+          />
           <div class="main__data-graph-block">
-            <img src="@/assets/image/graph.png" alt="">
+            <img v-if="numberImage === 0" src="@/assets/image/graph.png" alt="">
+            <img v-if="numberImage === 1" src="@/assets/image/heatmap.png" alt="">
+            <img v-if="numberImage === 2" src="@/assets/image/brain.png" alt="">
           </div>
-          <Tabs />
         </div>
       </div>
       <div class="main__right">
@@ -111,20 +120,20 @@
           </div>
           <div class="main__value-data">
             <div class="main__value-data-item">
-              <span>Model accuracy</span>
-              <span>18</span>
+              <span>Accuracy</span>
+              <span>78%</span>
             </div>
             <div class="main__value-data-item">
-              <span>Model precision</span>
-              <span>22</span>
+              <span>Precision</span>
+              <span>76%</span>
             </div>
             <div class="main__value-data-item">
-              <span>Model recall</span>
-              <span>16</span>
+              <span>Recall</span>
+              <span>67%</span>
             </div>
             <div class="main__value-data-item">
-              <span>Model F-1 score</span>
-              <span>15</span>
+              <span>F-1 score</span>
+              <span>71%</span>
             </div>
           </div>
         </div>
@@ -142,6 +151,11 @@ import Select from "@/components/UI/Select/Select.vue";
 export default {
   data() {
     return {
+      tabs: [
+        { title: 'Graph', id: 0},
+        { title: 'Heatmap', id: 1},
+        { title: 'Brain Image', id: 2},
+      ],
       radios: [
         { label: 'Manual', id: 0 },
         { label: 'Auto', id: 1 },
@@ -176,7 +190,8 @@ export default {
         { text: 'Features 1', id: 0 },
         { text: 'Features 2', id: 1 },
         { text: 'Features 3', id: 2 },
-      ]
+      ],
+      numberImage: 0
     }
   },
   components: {
@@ -184,6 +199,11 @@ export default {
     Radio,
     Tabs,
     Button,
+  },
+  methods: {
+    changeImage(id) {
+      this.numberImage = id
+    }
   }
 }
 </script>
